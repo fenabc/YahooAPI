@@ -1,0 +1,13 @@
+<%= link_to "post#index", posts_path %>
+<%= render "layouts/error_messages", object: @post %>
+<%= form_with model: @post, local: true do |f| %>
+  <div class = "form-group">
+  <%= f.label :user_id, "name" %>
+  <%= f.select :user_id,User.all.collect{|user| [user.name, user.id]} , class: "form-control" %><br>
+  <%= f.label :title, "title" %>
+  <%= f.text_field :title, class: "form-control" %>
+  <%= f.label :explanations, "explanation" %>
+  <%= f.text_field :explanations, class: "form-control" %>
+  <%= f.submit btn_name, class: "btn btn-primary" %>
+  </div>
+<% end %>

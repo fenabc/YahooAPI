@@ -1,0 +1,13 @@
+ja: 
+  models:
+    post: '投稿'
+    user: 'ユーザー'
+  attributes: 
+    post:
+      id: 'ID'
+      title: '題名'
+      explanations: '説明'
+      user_id: '名前'
+    user:
+      name: '名前'
+      email: 'メールアドレス'

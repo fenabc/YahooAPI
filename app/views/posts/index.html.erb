@@ -1,0 +1,43 @@
+<h1>Posts#index</h1>
+<% if logged_in? %>
+  <p>loginしてます</p>
+<% else %>
+  <p>loginしてません</p>
+<% end %>
+
+<div class = "serach">
+  <%= form_with method: :get, url: posts_find_path do |f| %>
+    <%= f.label :text, "serach"%>
+    <%= f.text_field :text, class: "form-control"%>
+    <%= f.submit "search", class: "btn btn-primary"%>
+  <% end %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"><%= t('attributes.post.title') %></th>
+      <th scope="col"><%= t('attributes.post.explanations') %></th>
+      <th scope="col"><%= t('attributes.post.user_id') %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @posts.each do |post|%>
+   <tbody>
+    <tr>
+      <th scope="row"><%= post.id %></th>
+      <td><%= link_to post.title, post_path(post)%></td>
+      <td><%= post.explanations%></td>
+      <td><%= post.user.name%></td>
+      <td><%= link_to "Edit", edit_post_path(post)%>
+          <%= button_to "delete", post_path(post), method: :delete %></td>
+    </tr>
+  </tbody>
+
+  <% end %>
+ 
+</table>
+
+ <%= link_to "create_post", new_post_path%>
+ <%= link_to "users", users_path%>

@@ -1,0 +1,36 @@
+<h1>Users#index</h1>
+<div class= "search">
+<%= form_with method: :get, url: users_find_path do |f|%>
+  <%= f.label :text, "search"%>
+  <%= f.text_field :text, class: "form-control"%>
+  <%= f.submit "search", class: "btn btn-primary"%>
+<%end%>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">name</th>
+      <th scope="col">email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @users.each do |user|%>
+   <tbody>
+    <tr>
+      <th scope="row"><%= user.id %></th>
+      <td><%= link_to user.name,user_path(user) %></td>
+      <td><%= user.email%></td>
+      <td><%= link_to "Edit", edit_user_path(user)%>
+          <%= button_to "delete", user_path(user), method: :delete %></td>
+    </tr>
+  </tbody>
+
+  <% end %>
+
+ 
+</table>
+<script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPTBlMlZsNXRFck5nOSZzPWNvbnN1bWVyc2VjcmV0Jng9YjI-"></script>
+
+ <%= link_to "create_user", new_user_path%>
+ <%= link_to "posts", posts_path%>

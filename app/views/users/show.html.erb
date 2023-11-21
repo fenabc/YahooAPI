@@ -1,0 +1,38 @@
+<h1>user#show</h1>
+<%= link_to "post#index", posts_path %>
+<table class="table">
+  <tr>
+    <th>id</th>
+    <td><%= @user.id %></td>
+  </tr>
+  <tr>
+    <th>name</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>email</th>
+    <td><%= @user.email %></td>
+  </tr>
+</table>
+
+<h2><%= @user.name %> posts</h2>
+<% if User.find(params[:id]).posts.any?%>
+  <table class="table">
+    <tr>
+      <th>title</th>
+      <th>explanation</th>
+      <th>name</th>
+    </tr>
+
+
+    <% User.find(params[:id]).posts.each do |post| %>
+    <tr>
+      <td><%= link_to post.title, post_path(post) %></td>
+      <td><%= post.explanations %></td>
+      <td><%= post.user.name %></td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+ <div>noting</div>
+<% end %>

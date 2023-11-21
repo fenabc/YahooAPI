@@ -1,0 +1,20 @@
+<h1>Post#show</h1>
+<%= link_to "post#index", posts_path %>
+<table class="table">
+  <tr>
+    <th>id</th>
+    <td><%= @post.id %></td>
+  </tr>
+  <tr>
+    <th>title</th>
+    <td><%= @post.title %></td>
+  </tr>
+  <tr>
+    <th>explanation</th>
+    <td><%= @post.explanations %></td>
+  </tr>
+  <tr>
+    <th>name</th>
+    <td><%= @post.user.name %></td>
+  </tr>
+</table>
